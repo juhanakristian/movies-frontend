@@ -1,9 +1,14 @@
+type OnChangeFn = (
+  event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => void;
+
 interface Props {
   name: string;
-  value: string;
+  value?: string;
   placeholder: string;
   type?: "text" | "number";
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: OnChangeFn;
+  rows?: number;
 }
 
 export default function TextField({
@@ -12,10 +17,24 @@ export default function TextField({
   value,
   type,
   onChange,
+  rows,
 }: Props) {
+  if (rows) {
+    return (
+      <textarea
+        className="p-2 rounded-sm text-black"
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        rows={rows}
+      />
+    );
+  }
+
   return (
     <input
-      className="p-2 rounded-sm"
+      className="p-2 rounded-sm text-black"
       name={name}
       placeholder={placeholder}
       type={type}
