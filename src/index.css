@@ -12,6 +12,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  @apply max-w-3xl mx-auto;
+}
+
 [data-reach-dialog-content] {
   @apply bg-gray-800 text-white !important;
 }

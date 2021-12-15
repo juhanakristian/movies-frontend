@@ -15,9 +15,11 @@ const queryClient = new QueryClient();
 function Home() {
   const navigate = useNavigate();
   return (
-    <div className="bg-gray-900 p-4">
+    <div className="bg-gray-900 p-4 flex flex-col">
       <h1 className="text-white text-6xl pb-10 font-bold uppercase">Movies</h1>
-      <Button onClick={() => navigate("/movies/add")}>Add Movie</Button>
+      <div className="flex justify-end pb-4">
+        <Button onClick={() => navigate("/movies/add")}>+ Add Movie</Button>
+      </div>
       <Outlet />
       <SearchForm />
       <MovieList />

@@ -2,7 +2,6 @@ import * as React from "react";
 import { useSearchParams } from "react-router-dom";
 
 import Button from "../components/Button";
-import TextField from "../components/TextField";
 
 export default function SearchForm() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,11 +19,12 @@ export default function SearchForm() {
       className="search-form flex flex-col gap-2 pb-4"
       onSubmit={handleSubmit}
     >
-      <TextField
+      <input
+        className="p-2 rounded-sm text-black"
         name="name"
         placeholder="Search"
-        onChange={(event) => setName(event.target.value)}
         value={name}
+        onChange={(event) => setName(event.target.value)}
       />
       <Button type="submit">Search</Button>
     </form>
