@@ -7,7 +7,7 @@ interface Props {
 export default function MovieListItem({ movie, onClick }: Props) {
   return (
     <li
-      className="text-white pt-4 pb-4 border-b-2 border-gray-800 flex justify-between"
+      className="text-white pt-4 pb-4 border-b-2 border-gray-800 flex justify-between cursor-pointer"
       onClick={onClick}
     >
       <span className="font-semibold">
