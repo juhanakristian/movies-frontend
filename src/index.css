@@ -17,5 +17,5 @@ body {
 }
 
 [data-reach-dialog-content] {
-  @apply bg-gray-800 text-white !important;
+  @apply bg-gray-800 text-white w-full md:w-3/4 lg:w-1/2 !important;
 }

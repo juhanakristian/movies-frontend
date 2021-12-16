@@ -9,6 +9,7 @@ import { Outlet, Route, Router, Routes, useNavigate } from "react-router";
 import MovieDetails from "./movie/MovieDetails";
 import MovieDialog from "./movie/MovieDialog";
 import Button from "./components/Button";
+import DeleteConfirmDialog from "./movie/DeleteConfirmDialog";
 
 const queryClient = new QueryClient();
 
@@ -35,7 +36,12 @@ function App() {
           <Route path="/" element={<Home />}>
             <Route path="/movies/add" element={<MovieDialog />}></Route>
           </Route>
-          <Route path="/movies/:id" element={<MovieDetails />}></Route>
+          <Route path="/movies/:id" element={<MovieDetails />}>
+            <Route
+              path="/movies/:id/delete"
+              element={<DeleteConfirmDialog />}
+            ></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

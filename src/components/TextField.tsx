@@ -6,6 +6,7 @@ interface Props {
   field: any;
   form: any;
   rows?: number;
+  label: string;
 }
 
 export default function TextField({
@@ -25,5 +26,14 @@ export default function TextField({
     );
   }
 
-  return <input className="p-2 rounded-sm text-black" {...field} {...props} />;
+  return (
+    <>
+      {props.label && (
+        <label htmlFor={field.name} className="text-white text-md">
+          {props.label}
+        </label>
+      )}
+      <input className="p-2 rounded-sm text-black" {...field} {...props} />
+    </>
+  );
 }

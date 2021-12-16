@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Outlet } from "react-router-dom";
 import Button from "../components/Button";
-import { Movie, Person } from "../types";
+import { Person } from "../types";
 
 function fetchMovie(id: number) {
   return fetch(`${import.meta.env.VITE_BACKEND_HOST}/movies/${id}`).then(
@@ -25,7 +25,7 @@ export default function MovieDetails() {
   if (isLoading) {
     return (
       <div className="p-4">
-        <Button onClick={() => navigate(-1)}>←Back</Button>
+        <Button onClick={() => navigate("/")}>←Back</Button>
         <div className="flex pt-4 flex-col text-white text-lg">
           <h1 className="text-3xl font-bold pb-4 pt-4">
             <div className="animate-pulse w-52 h-12 bg-gray-800 rounded-md"></div>
@@ -85,7 +85,7 @@ export default function MovieDetails() {
 
   return (
     <div className="p-4">
-      <Button onClick={() => navigate(-1)}>←Back</Button>
+      <Button onClick={() => navigate("/")}>←Back</Button>
       <div className="flex pt-4 flex-col text-white text-lg">
         <h1 className="text-3xl font-bold pb-4 pt-4">
           {data.name} ({data.year})
@@ -111,6 +111,12 @@ export default function MovieDetails() {
           ))}
         </ul>
       </div>
+      <div className="pt-4 flex justify-end">
+        <Button onClick={() => navigate(`/movies/${data.id}/delete`)}>
+          Delete movie
+        </Button>
+      </div>
+      <Outlet />
     </div>
   );
 }
